@@ -6,7 +6,7 @@ namespace Coff\OandaWrapper\Enum;
 
 class OrderStateFilter extends Enum
 {
-    const   _default    =   null,
+    const  __default    =   null,
         PENDING     =   'PENDING',
         FILLED      =   'FILLED',
         TRIGGERED   =   'TRIGGERED',

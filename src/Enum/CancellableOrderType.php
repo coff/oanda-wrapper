@@ -5,7 +5,7 @@ namespace Coff\OandaWrapper\Enum;
 
 class CancellableOrderType extends Enum
 {
-    const   _default            =   null,
+    const  __default            =   null,
         LIMIT               =   'LIMIT',
         STOP                =   'STOP',
         MARKET_IF_TOUCHED   =   'MARKET_IF_TOUCHED',

@@ -19,7 +19,7 @@ namespace Coff\OandaWrapper\Enum;
 class OrderTriggerCondition
 {
     const
-        _default = self::DEFAULT,
+       __default = self::DEFAULT,
         DEFAULT = "DEFAULT",  // Trigger an Order the “natural” way: compare its price to the ask for long Orders and bid for short Orders.
         INVERSE = "INVERSE",  // Trigger an Order the opposite of the “natural” way: compare its price the bid for long Orders and ask for short Orders.
         BID = "BID",      // Trigger an Order by comparing its price to the bid regardless of whether it is long or short.

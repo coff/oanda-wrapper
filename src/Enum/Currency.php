@@ -5,7 +5,8 @@ namespace Coff\OandaWrapper\Enum;
 
 class Currency extends Enum
 {
-    const   _default = 0,
+    const  __default = self::UNKNOWN,
+            UNKNOWN = '---',
             AED = 'AED',  // 784	2	United Arab Emirates dirham	 United Arab Emirates
             AMD = 'AMD',  // 051	2	Armenian dram	 Armenia
             ANG = 'ANG',  // 532	2	Netherlands Antillean guilder	 Curaçao (CW),  Sint Maarten (SX)

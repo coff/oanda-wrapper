@@ -6,7 +6,7 @@ namespace Coff\OandaWrapper\Enum;
 
 class OrderType extends Enum
 {
-    const   _default            =   null,
+    const  __default            =   null,
             MARKET              =   'MARKET',
             LIMIT               =   'LIMIT',
             STOP                =   'STOP',

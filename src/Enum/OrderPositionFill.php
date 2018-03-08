@@ -11,7 +11,7 @@ namespace Coff\OandaWrapper\Enum;
  */
 class OrderPositionFill extends Enum
 {
-    const   _default        =   self::DEFAULT,
+    const  __default        =   self::DEFAULT,
             OPEN_ONLY       =   "OPEN_ONLY",    // When the Order is filled, only allow Positions to be opened or extended.
             REDUCE_FIRST    =   "REDUCE_FIRST", // When the Order is filled, always fully reduce an existing Position
                                                 // before opening a new Position.

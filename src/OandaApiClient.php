@@ -73,10 +73,13 @@ class OandaApiClient
 
     /**
      * @param string $account
+     * @return $this
      */
-    public function setAccount(string $account): void
+    public function setAccount(string $account): OandaApiClient
     {
         $this->account = $account;
+
+        return $this;
     }
 
     public function getHost() {
