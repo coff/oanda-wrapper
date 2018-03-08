@@ -4,7 +4,6 @@ namespace Coff\OandaWrapper\Caller;
 
 use Coff\OandaWrapper\Endpoint\AccountEndpoint;
 use Coff\OandaWrapper\Endpoint\Endpoint;
-use Coff\OandaWrapper\Entity\Entity;
 use Coff\OandaWrapper\Exception\OandaException;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
@@ -16,7 +15,8 @@ class GuzzleHttpCaller extends Caller
     /** @var ClientInterface */
     protected $httpClient;
 
-    public function setHttpClient(ClientInterface $client) {
+    public function setHttpClient(ClientInterface $client)
+    {
         $this->httpClient = $client;
 
         return $this;
@@ -36,7 +36,7 @@ class GuzzleHttpCaller extends Caller
         $url = $this->client->getUrl($endpoint);
         $headers = $endpoint->getHeaders();
 
-        $headers['Authorization'] =  'Bearer ' . $this->client->getAuthToken();
+        $headers['Authorization'] = 'Bearer ' . $this->client->getAuthToken();
 
         /** @var RequestInterface $request */
         $request = new $this->requestClass($endpoint->getMethod(), $url, $headers, $endpoint->getBody());

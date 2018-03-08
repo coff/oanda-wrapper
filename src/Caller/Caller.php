@@ -5,8 +5,6 @@ namespace Coff\OandaWrapper\Caller;
 
 
 use Coff\OandaWrapper\OandaApiClient;
-use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
 
 abstract class Caller implements CallerInterface
 {
@@ -39,8 +37,9 @@ abstract class Caller implements CallerInterface
      * @param OandaApiClient $client
      * @return $this
      */
-    public function setClient(OandaApiClient $client) {
-        $this->client  = $client;
+    public function setClient(OandaApiClient $client)
+    {
+        $this->client = $client;
 
         return $this;
     }

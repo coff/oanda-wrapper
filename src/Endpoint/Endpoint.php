@@ -3,22 +3,17 @@
 
 namespace Coff\OandaWrapper\Endpoint;
 
-use Psr\Http\Message\ResponseInterface;
-
 abstract class Endpoint implements EndpointInterface
 {
     const
-        METHOD_GET  =   'GET',
-        METHOD_PUT  =   'PUT',
-        METHOD_POST =   'POST',
-        METHOD_PATCH=   'PATCH';
-
+        METHOD_GET = 'GET',
+        METHOD_PUT = 'PUT',
+        METHOD_POST = 'POST',
+        METHOD_PATCH = 'PATCH';
+    protected $result;
     /** @var string */
     private $path = '/v3';
-
     private $headers = [];
-
-    protected $result;
 
     /**
      * @return string
@@ -33,19 +28,20 @@ abstract class Endpoint implements EndpointInterface
         return $this->headers;
     }
 
-    protected function setHeader($headerName, $content)
-    {
-        $this->headers[$headerName] = $content;
-
-        return $this;
-    }
-
     public function getBody()
     {
         return null;
     }
 
-    public function getResult() {
+    public function getResult()
+    {
         return $this->result;
+    }
+
+    protected function setHeader($headerName, $content)
+    {
+        $this->headers[$headerName] = $content;
+
+        return $this;
     }
 }

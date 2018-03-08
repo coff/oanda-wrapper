@@ -55,9 +55,9 @@ class MarketOrder extends Order
     /** @var \DateTime */
     protected $cancelledTime;
 
-    public function toJson()
+    public function toJson() : string
     {
-        // TODO: Implement toJson() method.
+        return '';
     }
 
 }

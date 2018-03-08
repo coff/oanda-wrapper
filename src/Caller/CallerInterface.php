@@ -5,7 +5,6 @@ namespace Coff\OandaWrapper\Caller;
 
 
 use Coff\OandaWrapper\Endpoint\Endpoint;
-use Coff\OandaWrapper\Entity\Entity;
 use Coff\OandaWrapper\OandaApiClient;
 
 interface CallerInterface

@@ -15,7 +15,7 @@ class OrderIdentifier extends Entity
     /**
      * @return string
      */
-    public function toJson()
+    public function toJson() : string
     {
         return <<<JSON
 { orderID: $this->orderId, clientOrderID: $this->clientOrderId

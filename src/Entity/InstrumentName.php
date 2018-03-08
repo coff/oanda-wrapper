@@ -9,6 +9,15 @@ use Coff\OandaWrapper\Enum\Currency;
 class InstrumentName
 {
     /**
+     * @var Currency
+     */
+    protected $fromCurrency;
+    /**
+     * @var Currency
+     */
+    protected $toCurrency;
+
+    /**
      * @return Currency
      */
     public function getFromCurrency(): Currency
@@ -43,15 +52,6 @@ class InstrumentName
         $this->toCurrency = $toCurrency;
         return $this;
     }
-    /**
-     * @var Currency
-     */
-    protected $fromCurrency;
-
-    /**
-     * @var Currency
-     */
-    protected $toCurrency;
 
     public function __toString()
     {

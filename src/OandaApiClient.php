@@ -7,18 +7,18 @@ use Coff\OandaWrapper\Endpoint\EndpointInterface;
 class OandaApiClient
 {
     const
-        STAGE_DEV       =   'dev',
-        STAGE_TESTING   =   'test',
-        STAGE_LIVE      =   'live';
+        STAGE_DEV = 'dev',
+        STAGE_TESTING = 'test',
+        STAGE_LIVE = 'live';
 
     /** @var string */
-    protected $stage='dev';
+    protected $stage = 'dev';
 
     /** @var string[] */
     protected $urls = [
-        self::STAGE_DEV     => 'https://api-fxpractice.oanda.com',
+        self::STAGE_DEV => 'https://api-fxpractice.oanda.com',
         self::STAGE_TESTING => 'https://api-fxpractice.oanda.com',
-        self::STAGE_LIVE    => 'https://api-fxtrade.oanda.com',
+        self::STAGE_LIVE => 'https://api-fxtrade.oanda.com',
     ];
 
     /** @var string */
@@ -82,7 +82,13 @@ class OandaApiClient
         return $this;
     }
 
-    public function getHost() {
+    public function getUrl(EndpointInterface $endpoint)
+    {
+        return $this->getHost() . $endpoint->getPath();
+    }
+
+    public function getHost()
+    {
         switch ($this->stage) {
             case self::STAGE_LIVE:
                 return $this->urls[self::STAGE_LIVE];
@@ -91,9 +97,5 @@ class OandaApiClient
             default:
                 return $this->urls[self::STAGE_DEV];
         }
-    }
-
-    public function getUrl(EndpointInterface $endpoint) {
-        return $this->getHost() . $endpoint->getPath();
     }
 }

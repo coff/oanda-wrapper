@@ -6,9 +6,10 @@ namespace Coff\OandaWrapper\Enum;
 
 class OrderState extends Enum
 {
-    const  __default    =   null,
-            PENDING     =   'PENDING',
-            FILLED      =   'FILLED',
-            TRIGGERED   =   'TRIGGERED',
-            CANCELLED   =   'CANCELLED';
+    const  __default = self::UNKNOWN,
+        UNKNOWN = '',
+        PENDING = 'PENDING',
+        FILLED = 'FILLED',
+        TRIGGERED = 'TRIGGERED',
+        CANCELLED = 'CANCELLED';
 }

@@ -54,24 +54,24 @@ class Account extends Entity
     protected $pl;
 
     /**
-     * @var string $resettablePL    The total realized profit/loss for the Account since it was last reset by the client.
+     * @var string $resettablePL The total realized profit/loss for the Account since it was last reset by the client.
      *                              Represented in the Account’s home currency.
      */
     protected $resettablePL;
 
     /**
-     * @var \DateTime $resettabledPLTime  The date/time that the Account’s resettablePL was last reset
+     * @var \DateTime $resettabledPLTime The date/time that the Account’s resettablePL was last reset
      */
     protected $resettabledPLTime;
 
     /**
-     * @var string $commission  The total amount of commission paid over the lifetime of the Account. Represented in the
+     * @var string $commission The total amount of commission paid over the lifetime of the Account. Represented in the
      *                          Account’s home currency.
      */
     protected $commission;
 
     /**
-     * @var string $marginRate  Client-provided margin rate override for the Account. The effective
+     * @var string $marginRate Client-provided margin rate override for the Account. The effective
      *                          margin rate of the Account is the lesser of this value and the OANDA
      *                          margin rate for the Account’s division. This value is only provided if a
      *                          margin rate override exists for the Account.
@@ -79,7 +79,7 @@ class Account extends Entity
     protected $marginRate;
 
     /**
-     * @var \DateTime $marginCallEnterTime  The date/time when the Account entered a margin call state. Only provided
+     * @var \DateTime $marginCallEnterTime The date/time when the Account entered a margin call state. Only provided
      *                                      if the Account is in a margin call.
      */
     protected $marginCallEnterTime;
@@ -90,7 +90,7 @@ class Account extends Entity
     protected $marginCallExtensionCount;
 
     /**
-     * @var \DateTime $lastMarginCallExtensionTime  The date/time of the Account’s last margin call extension.
+     * @var \DateTime $lastMarginCallExtensionTime The date/time of the Account’s last margin call extension.
      */
     protected $lastMarginCallExtensionTime;
 
@@ -115,13 +115,13 @@ class Account extends Entity
     protected $hedgingEnabled;
 
     /**
-     * @var string $unrealizedPL    The total unrealized profit/loss for all Trades currently open in the
+     * @var string $unrealizedPL The total unrealized profit/loss for all Trades currently open in the
      *                              Account. Represented in the Account’s home currency.
      */
     protected $unrealizedPL;
 
     /**
-     * @var string $nav     The net asset value of the Account. Equal to Account balance +
+     * @var string $nav The net asset value of the Account. Equal to Account balance +
      *                      unrealizedPL. Represented in the Account’s home currency.
      */
     protected $nav;
@@ -157,18 +157,18 @@ class Account extends Entity
     protected $marginCloseoutMarginUsed;
 
     /**
-     * @var string $marginCloseoutPercent   The Account’s margin closeout percentage. When this value is 1.0 or above
+     * @var string $marginCloseoutPercent The Account’s margin closeout percentage. When this value is 1.0 or above
      *                                      the Account is in a margin closeout situation.
      */
     protected $marginCloseoutPercent;
 
     /**
-     * @var string $marginCloseoutPositionValue     The value of the Account’s open positions as used for margin closeout
+     * @var string $marginCloseoutPositionValue The value of the Account’s open positions as used for margin closeout
      *                                              calculations represented in the Account’s home currency. */
     protected $marginCloseoutPositionValue;
 
     /**
-     * @var string $withdrawalLimit     The current WithdrawalLimit for the account which will be zero or a
+     * @var string $withdrawalLimit The current WithdrawalLimit for the account which will be zero or a
      *                                  positive value indicating how much can be withdrawn from the account.
      */
     protected $withdrawalLimit;
@@ -179,7 +179,7 @@ class Account extends Entity
     protected $marginCallMarginUsed;
 
     /**
-     * @var string $marginCallPercent   The Account’s margin call percentage. When this value is 1.0 or above the
+     * @var string $marginCallPercent The Account’s margin call percentage. When this value is 1.0 or above the
      *                                  Account is in a margin call situation.
      */
     protected $marginCallPercent;
@@ -217,7 +217,7 @@ class Account extends Entity
         $this->currency = Currency::fromValue($json->currency);
         $this->balance = $json->balance;
         $this->createdByUserId = $json->createdByUserID;
-        $this->createdTime = \DateTime::createFromFormat('U.u', substr($json->createdTime,0,17));
+        $this->createdTime = \DateTime::createFromFormat('U.u', substr($json->createdTime, 0, 17));
         $this->pl = $json->pl;
         $this->resettablePL = $json->resettablePL;
         $this->resettabledPLTime = \DateTime::createFromFormat('U.u', substr($json->resettablePLTime, 0, 17));
