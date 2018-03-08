@@ -1,0 +1,23 @@
+{
+  "name": "coff/oanda-wrapper",
+  "description": "Oanda V20 API wrapper",
+  "minimum-stability": "stable",
+  "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Krzysztof Kubanek",
+      "email": "krzysztof.kubanek@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Coff\\OandaWrapper\\": "src/"
+    }
+  },
+  "require": {
+    "garoevans/php-enum": "^1.2",
+    "guzzlehttp/guzzle": "^6.3",
+    "psr/log": "^1.0"
+  }
+}
