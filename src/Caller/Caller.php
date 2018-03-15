@@ -5,6 +5,7 @@ namespace Coff\OandaWrapper\Caller;
 
 
 use Coff\OandaWrapper\OandaApiClient;
+use Coff\OandaWrapper\Response\ResponseInterface;
 
 abstract class Caller implements CallerInterface
 {
@@ -12,7 +13,12 @@ abstract class Caller implements CallerInterface
     protected $client;
 
     /** @var string */
-    protected $requestClass;
+    protected $httpRequestClass;
+
+    /**
+     * @var ResponseInterface
+     */
+    protected $response;
 
     /**
      * @return string
@@ -26,9 +32,9 @@ abstract class Caller implements CallerInterface
      * @param string $requestClass
      * @return $this
      */
-    public function setRequestClass($requestClass): Caller
+    public function setHttpRequestClass($requestClass): Caller
     {
-        $this->requestClass = $requestClass;
+        $this->httpRequestClass = $requestClass;
 
         return $this;
     }
@@ -44,4 +50,8 @@ abstract class Caller implements CallerInterface
         return $this;
     }
 
+    public function getResponse(): ResponseInterface
+    {
+        return $this->response;
+    }
 }

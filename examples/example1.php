@@ -1,38 +1,28 @@
 #!/usr/bin/php
 <?php
 
-include (__DIR__ . '/../vendor/autoload.php');
+namespace Coff\OandaWrapper\Examples;
 
-/* bootstrap start */
+include(__DIR__ . '/../vendor/autoload.php');
 
-$oanda = new \Coff\OandaWrapper\OandaApiClient();
-$oanda
-    ->setStage(\Coff\OandaWrapper\OandaApiClient::STAGE_DEV)
-    ->setAuthToken('xxx')
-    ->setAccount('xxx');
+include(__DIR__ . '/bootstrap.php');
 
-$caller = new \Coff\OandaWrapper\Caller\GuzzleHttpCaller();
-
-$caller
-    ->setRequestClass(\GuzzleHttp\Psr7\Request::class)
-    ->setHttpClient(new \GuzzleHttp\Client())
-    ->setClient($oanda);
-
-/* bootstrap end */
-
-
-/* calling code */
 $endpoint = new \Coff\OandaWrapper\Endpoint\AccountEndpoint();
+/*$endpoint
+    ->setResponseClass(...)*/
 
 try {
-    $caller->call($endpoint);
 
-    $resultData = $endpoint->getResult();
+    /** @var \Coff\OandaWrapper\Response\ResponseInterface $response */
+    $response = $caller
+        ->call($endpoint)
+        ->getResponse();
 
-   var_dump($resultData);
+    var_dump($response);
 
-} catch (\Exception $e) {
-    echo $e->getMessage();
+}  catch (\Exception $e) {
+    echo $e->getMessage() . PHP_EOL;
+    echo $e->getTraceAsString() . PHP_EOL;
 }
 
 

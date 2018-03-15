@@ -3,6 +3,9 @@
 
 namespace Coff\OandaWrapper\Endpoint;
 
+use Coff\OandaWrapper\Exception\OandaException;
+use Coff\OandaWrapper\Response\ResponseInterface;
+
 abstract class Endpoint implements EndpointInterface
 {
     const
@@ -10,10 +13,41 @@ abstract class Endpoint implements EndpointInterface
         METHOD_PUT = 'PUT',
         METHOD_POST = 'POST',
         METHOD_PATCH = 'PATCH';
-    protected $result;
-    /** @var string */
+    /**
+     * @var string
+     */
+    protected $responseClass;
+    /**
+     *
+     * @var string
+     */
     private $path = '/v3';
+    /**
+     * HTTP headers required for endpoint
+     * @var array
+     */
     private $headers = [];
+
+    public function getResponseClass(): string
+    {
+        return $this->responseClass;
+    }
+
+    /**
+     * @param string $class
+     * @return EndpointInterface
+     * @throws OandaException
+     */
+    public function setResponseClass(string $class): EndpointInterface
+    {
+        if (false === $class instanceof ResponseInterface) {
+            throw new OandaException('Invalid response class!');
+        }
+
+        $this->responseClass = $class;
+
+        return $this;
+    }
 
     /**
      * @return string
@@ -33,15 +67,11 @@ abstract class Endpoint implements EndpointInterface
         return null;
     }
 
-    public function getResult()
-    {
-        return $this->result;
-    }
-
     protected function setHeader($headerName, $content)
     {
         $this->headers[$headerName] = $content;
 
         return $this;
     }
+
 }

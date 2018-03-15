@@ -18,5 +18,5 @@ class OrderPositionFill extends Enum
         // before opening a new Position.
         REDUCE_ONLY = "REDUCE_ONLY",  // When the Order is filled, only reduce an existing Position.
         DEFAULT = "DEFAULT";       // When the Order is filled, use REDUCE_FIRST behaviour for non-client
-                                    // hedging Accounts, and OPEN_ONLY behaviour for client hedging Accounts.
+    // hedging Accounts, and OPEN_ONLY behaviour for client hedging Accounts.
 }

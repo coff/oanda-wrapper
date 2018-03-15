@@ -4,8 +4,6 @@
 namespace Coff\OandaWrapper\Endpoint;
 
 
-use Psr\Http\Message\ResponseInterface;
-
 interface EndpointInterface
 {
     public function getPath();
@@ -14,7 +12,7 @@ interface EndpointInterface
 
     public function getHeaders();
 
-    public function getResult();
+    public function setResponseClass(string $class): EndpointInterface;
 
-    public function parseResponse(ResponseInterface $response);
+    public function getResponseClass(): string;
 }

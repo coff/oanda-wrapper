@@ -6,7 +6,7 @@ namespace Coff\OandaWrapper\Entity;
 
 interface EntityInterface
 {
-    public function toJson(): string;
+    public static function createFromJson(\stdClass $json): Entity;
 
-    public function fromJson(\stdClass $json);
+    public function toJson(): string;
 }

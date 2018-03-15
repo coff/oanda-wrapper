@@ -14,5 +14,8 @@ use Coff\OandaWrapper\Entity\Entity;
  */
 class Position extends Entity
 {
-
+    public static function createFromJson(\stdClass $json): Entity
+    {
+        return new static();
+    }
 }

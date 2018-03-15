@@ -5,10 +5,11 @@ namespace Coff\OandaWrapper\Caller;
 use Coff\OandaWrapper\Endpoint\AccountEndpoint;
 use Coff\OandaWrapper\Endpoint\Endpoint;
 use Coff\OandaWrapper\Exception\OandaException;
+use Coff\OandaWrapper\Response\ResponseInterface;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
-use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\RequestInterface as HttpRequest;
+use Psr\Http\Message\ResponseInterface as HttpResponse;
 
 class GuzzleHttpCaller extends Caller
 {
@@ -24,10 +25,11 @@ class GuzzleHttpCaller extends Caller
 
     /**
      * @param Endpoint $endpoint
+     * @return CallerInterface
      * @throws OandaException
      * @throws GuzzleException
      */
-    public function call(Endpoint $endpoint)
+    public function call(Endpoint $endpoint): CallerInterface
     {
         if ($endpoint instanceof AccountEndpoint) {
             $endpoint->setAccountId($this->client->getAccount());
@@ -38,12 +40,17 @@ class GuzzleHttpCaller extends Caller
 
         $headers['Authorization'] = 'Bearer ' . $this->client->getAuthToken();
 
-        /** @var RequestInterface $request */
-        $request = new $this->requestClass($endpoint->getMethod(), $url, $headers, $endpoint->getBody());
+        /** @var HttpRequest $request */
+        $request = new $this->httpRequestClass($endpoint->getMethod(), $url, $headers, $endpoint->getBody());
 
-        /** @var ResponseInterface $response */
-        $response = $this->httpClient->send($request);
+        /** @var HttpResponse $response */
+        $httpResponse = $this->httpClient->send($request);
 
-        $endpoint->parseResponse($response);
+        /** @var ResponseInterface $responseClass */
+        $responseClass = $endpoint->getResponseClass();
+
+        $this->response = $responseClass::createFromHttpResponse($httpResponse);
+
+        return $this;
     }
 }

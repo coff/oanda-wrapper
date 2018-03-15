@@ -3,12 +3,15 @@
 namespace Coff\OandaWrapper\Endpoint;
 
 use Coff\OandaWrapper\Entity\Account\Account;
+use Coff\OandaWrapper\Response\AccountResponse;
 use Psr\Http\Message\ResponseInterface;
 
 class AccountEndpoint extends AccountsEndpoint
 {
     /** @var string */
     protected $accountId;
+
+    protected $responseClass = AccountResponse::class;
 
     public function getHeaders()
     {
@@ -39,14 +42,5 @@ class AccountEndpoint extends AccountsEndpoint
         $this->accountId = $accountId;
 
         return $this;
-    }
-
-    public function parseResponse(ResponseInterface $response)
-    {
-        $stream = $response->getBody();
-
-        $entity = new Account();
-        $entity->fromJson(json_decode($stream->getContents()));
-        $this->result = $entity;
     }
 }

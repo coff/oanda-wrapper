@@ -8,9 +8,4 @@ abstract class Entity implements EntityInterface
     {
         return '{}';
     }
-
-    public function fromJson(\stdClass $json)
-    {
-        return $this;
-    }
 }

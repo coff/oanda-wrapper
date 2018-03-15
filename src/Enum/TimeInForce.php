@@ -6,7 +6,7 @@ namespace Coff\OandaWrapper\Enum;
 
 class TimeInForce extends Enum
 {
-    const  
+    const
         __default = null,
         GTC = "GTC", // The Order is "Good unTil Cancelled"
         GTD = "GTD", // The Order is “Good unTil Date” and will be cancelled at the provided time

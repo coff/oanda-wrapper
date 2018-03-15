@@ -5,8 +5,9 @@ namespace Coff\OandaWrapper\Entity;
 
 
 use Coff\OandaWrapper\Enum\Currency;
+use Coff\OandaWrapper\Exception\OandaException;
 
-class InstrumentName
+class InstrumentName extends Entity
 {
     /**
      * @var Currency
@@ -16,6 +17,26 @@ class InstrumentName
      * @var Currency
      */
     protected $toCurrency;
+
+    public function __construct(Currency $fromCurrency, Currency $toCurrency)
+    {
+        $this->fromCurrency = $fromCurrency;
+        $this->toCurrency = $toCurrency;
+    }
+
+
+    public static function createFromString($str) :InstrumentName
+    {
+        [$from, $to] = explode("_", $str);
+
+        return new static(Currency::fromValue($from), Currency::fromValue($to));
+    }
+
+
+    public static function createFromJson(\stdClass $json) :Entity
+    {
+        throw new OandaException('Not implemented!');
+    }
 
     /**
      * @return Currency

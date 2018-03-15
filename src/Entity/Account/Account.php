@@ -206,62 +206,63 @@ class Account extends Entity
 
     /**
      * @param \stdClass $json
-     * @return $this|void
+     * @return Account
      */
-    public function fromJson(\stdClass $json)
+    public static function createFromJson(\stdClass $json): Entity
     {
+        $entity = new static();
+
         $json = $json->account;
 
-        $this->id = $json->id;
-        $this->alias = isset($json->alias) ? $json->alias : null;
-        $this->currency = Currency::fromValue($json->currency);
-        $this->balance = $json->balance;
-        $this->createdByUserId = $json->createdByUserID;
-        $this->createdTime = \DateTime::createFromFormat('U.u', substr($json->createdTime, 0, 17));
-        $this->pl = $json->pl;
-        $this->resettablePL = $json->resettablePL;
-        $this->resettabledPLTime = \DateTime::createFromFormat('U.u', substr($json->resettablePLTime, 0, 17));
-        $this->commission = $json->commission;
-        $this->marginRate = $json->marginRate;
-        $this->marginCallEnterTime = $json->marginCallEnterTime;
-        $this->marginCallExtensionCount = $json->marginCallExtensionCount;
-        $this->lastMarginCallExtensionTime = $json->lastMarginCallExtensionTime;
-        $this->openTradeCount = $json->openTradeCount;
-        $this->openPositionCount = $json->openPositionCount;
-        $this->pendingOrderCount = $json->pendingOrderCount;
-        $this->hedgingEnabled = $json->hedgingEnabled;
-        $this->unrealizedPL = $json->unrealizedPL;
-        $this->nav = $json->NAV;
-        $this->marginUsed = $json->marginUsed;
-        $this->marginAvailable = $json->marginAvailable;
-        $this->positionValue = $json->positionValue;
-        $this->marginCloseoutUnrealizedPL = $json->marginCloseoutUnrealizedPL;
-        $this->marginCloseoutNAV = $json->marginCloseoutNAV;
-        $this->marginCloseoutMarginUsed = $json->marginCloseoutMarginUsed;
-        $this->marginCloseoutPercent = $json->marginCloseoutPercent;
-        $this->marginCloseoutPositionValue = $json->marginCloseoutPositionValue;
-        $this->withdrawalLimit = $json->withdrawalLimit;
-        $this->marginCallMarginUsed = $json->marginCallMarginUsed;
-        $this->marginCallPercent = $json->marginCallPercent;
-        $this->lastTransactionId = $json->lastTransactionId;
+        $entity->id = $json->id;
+        $entity->alias = isset($json->alias) ? $json->alias : null;
+        $entity->currency = Currency::fromValue($json->currency);
+        $entity->balance = $json->balance;
+        $entity->createdByUserId = $json->createdByUserID;
+        $entity->createdTime = \DateTime::createFromFormat('U.u', substr($json->createdTime, 0, 17));
+        $entity->pl = $json->pl;
+        $entity->resettablePL = $json->resettablePL;
+        $entity->resettabledPLTime = \DateTime::createFromFormat('U.u', substr($json->resettablePLTime, 0, 17));
+        $entity->commission = $json->commission;
+        $entity->marginRate = $json->marginRate;
+        $entity->marginCallEnterTime = $json->marginCallEnterTime;
+        $entity->marginCallExtensionCount = $json->marginCallExtensionCount;
+        $entity->lastMarginCallExtensionTime = $json->lastMarginCallExtensionTime;
+        $entity->openTradeCount = $json->openTradeCount;
+        $entity->openPositionCount = $json->openPositionCount;
+        $entity->pendingOrderCount = $json->pendingOrderCount;
+        $entity->hedgingEnabled = $json->hedgingEnabled;
+        $entity->unrealizedPL = $json->unrealizedPL;
+        $entity->nav = $json->NAV;
+        $entity->marginUsed = $json->marginUsed;
+        $entity->marginAvailable = $json->marginAvailable;
+        $entity->positionValue = $json->positionValue;
+        $entity->marginCloseoutUnrealizedPL = $json->marginCloseoutUnrealizedPL;
+        $entity->marginCloseoutNAV = $json->marginCloseoutNAV;
+        $entity->marginCloseoutMarginUsed = $json->marginCloseoutMarginUsed;
+        $entity->marginCloseoutPercent = $json->marginCloseoutPercent;
+        $entity->marginCloseoutPositionValue = $json->marginCloseoutPositionValue;
+        $entity->withdrawalLimit = $json->withdrawalLimit;
+        $entity->marginCallMarginUsed = $json->marginCallMarginUsed;
+        $entity->marginCallPercent = $json->marginCallPercent;
+        $entity->lastTransactionId = $json->lastTransactionId;
 
         foreach ($json->trades as $jsonItem) {
-            $entity = new TradeSummary();
-            $entity->fromJson($jsonItem);
-            $this->trades[] = $entity;
+            $subEntity = TradeSummary::createFromJson($jsonItem);
+            $entity->trades[] = $subEntity;
         }
 
         foreach ($json->positions as $jsonItem) {
-            $entity = new Position();
-            $entity->fromJson($jsonItem);
-            $this->positions[] = $entity;
+            $subEntity = Position::createFromJson($jsonItem);
+            $entity->positions[] = $subEntity;
         }
 
         foreach ($json->orders as $jsonItem) {
-            $entity = new Order();
-            $entity->fromJson($jsonItem);
-            $this->orders[] = $entity;
+            $subEntity = Order::createFromJson($jsonItem);
+            $entity->orders[] = $subEntity;
         }
+
+        return $entity;
     }
 
     /**
