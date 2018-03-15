@@ -3,8 +3,9 @@
 
 namespace Coff\OandaWrapper\Entity\OrderRequest;
 
+use Coff\OandaWrapper\Entity\Details\StopLossDetails;
+use Coff\OandaWrapper\Entity\Details\TakeProfitDetails;
 use Coff\OandaWrapper\Entity\InstrumentName;
-use Coff\OandaWrapper\Entity\TakeProfitDetails;
 use Coff\OandaWrapper\Enum\OrderPositionFill;
 use Coff\OandaWrapper\Enum\TimeInForce;
 
@@ -40,8 +41,22 @@ class MarketOrderRequest extends OrderRequest
     /** @var StopLossDetails */
     protected $stopLossOnFill;
 
-    public static function createFromJson(\stdClass $json): self
+    public function __construct()
     {
-        // TODO: Implement createFromJson() method.
+        $this->timeInForce = TimeInForce::FOK();
+    }
+
+    public function toJson(): string
+    {
+        return <<<JSON
+{   
+    type: "$this->type",
+    instrument: "$this->instrument",
+    units: "$this->units",
+    timeInForce: "$this->timeInForce",
+    priceBound: "$this->priceBound",
+}
+JSON;
+
     }
 }

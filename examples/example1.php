@@ -7,6 +7,15 @@ include(__DIR__ . '/../vendor/autoload.php');
 
 include(__DIR__ . '/bootstrap.php');
 
+/**
+ * -------------------------------------------------------------------------
+ * Remark:
+ *
+ * Use only practice (demo) account for running example scripts and testing!
+ * Some of them may open trade positions for you!
+ * -------------------------------------------------------------------------
+ */
+
 $endpoint = new \Coff\OandaWrapper\Endpoint\AccountEndpoint();
 /*$endpoint
     ->setResponseClass(...)*/

@@ -3,7 +3,7 @@
 
 namespace Coff\OandaWrapper\Examples;
 
-use Coff\OandaWrapper\Enum\Currency;
+use Coff\OandaWrapper\Entity\OrderRequest\MarketOrderRequest;
 
 include(__DIR__ . '/../vendor/autoload.php');
 
@@ -18,10 +18,8 @@ include(__DIR__ . '/bootstrap.php');
  * -------------------------------------------------------------------------
  */
 
-$instrumentName = new \Coff\OandaWrapper\Entity\InstrumentName(Currency::EUR(), Currency::USD());
-
-$endpoint = new \Coff\OandaWrapper\Endpoint\PricingEndpoint();
-$endpoint->addInstrument($instrumentName);
+$endpoint = new \Coff\OandaWrapper\Endpoint\OrderEndpoint();
+$endpoint->setOrderRequest($marketOrder = new MarketOrderRequest());
 
 try {
     $response = $caller
