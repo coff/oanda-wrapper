@@ -6,6 +6,7 @@ namespace Coff\OandaWrapper\Entity\Price;
 
 use Coff\OandaWrapper\Entity\Entity;
 use Coff\OandaWrapper\Entity\InstrumentName;
+use Coff\OandaWrapper\Entity\Order\UnitsAvailable;
 
 class Price extends Entity
 {
@@ -89,6 +90,13 @@ class Price extends Entity
     public static function createFromJson(\stdClass $json): Entity
     {
        // var_dump($json); exit;
+        /*
+         * Deprecated json fields are:
+         * - status
+         * - unitsAvailable
+         * - quoteHomeConversionFactors
+         */
+
         $instrument = InstrumentName::createFromString($json->instrument);
 
         foreach ($json->asks as $ask) {

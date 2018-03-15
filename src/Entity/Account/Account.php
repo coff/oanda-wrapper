@@ -208,7 +208,7 @@ class Account extends Entity
      * @param \stdClass $json
      * @return Account
      */
-    public static function createFromJson(\stdClass $json): Entity
+    public static function createFromJson(\stdClass $json): self
     {
         $entity = new static();
 
