@@ -1,19 +1,19 @@
 <?php
 
 
-namespace Coff\OandaWrapper\Response;
+namespace Coff\OandaWrapper\EndpointResponse;
 
 
 use Coff\OandaWrapper\Entity\Entity;
 use Psr\Http\Message\ResponseInterface as HttpResponseInterface;
 
-interface ResponseInterface
+interface EndpointResponseInterface
 {
 
     /**
      * @param \Psr\Http\Message\ResponseInterface $response
      */
-    public static function createFromHttpResponse(HttpResponseInterface $httpResponse): ResponseInterface;
+    public static function createFromHttpResponse(HttpResponseInterface $httpResponse): EndpointResponseInterface;
 
     /**
      * Returns all entities

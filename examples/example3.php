@@ -3,6 +3,9 @@
 
 namespace Coff\OandaWrapper\Examples;
 
+use Coff\OandaWrapper\Entity\ClientExtensions;
+use Coff\OandaWrapper\Entity\Details\StopLossDetails;
+use Coff\OandaWrapper\Entity\InstrumentName;
 use Coff\OandaWrapper\Entity\OrderRequest\MarketOrderRequest;
 
 include(__DIR__ . '/../vendor/autoload.php');
@@ -20,6 +23,20 @@ include(__DIR__ . '/bootstrap.php');
 
 $endpoint = new \Coff\OandaWrapper\Endpoint\OrderEndpoint();
 $endpoint->setOrderRequest($marketOrder = new MarketOrderRequest());
+
+$marketOrder
+    ->setInstrument(InstrumentName::createFromString("PLN_EUR"))
+    ->setUnits(1)
+    ->setPriceBound(10)
+    ->setStopLossOnFill($stopLossDet = new StopLossDetails())
+    ->setClientExtensions( $extensions = new ClientExtensions());
+
+$extensions
+    ->setComment('This is a comment')
+    ->setTag('#example3');
+
+$stopLossDet
+    ->setPrice(9);
 
 try {
     $response = $caller

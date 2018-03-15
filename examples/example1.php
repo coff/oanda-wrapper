@@ -22,7 +22,7 @@ $endpoint = new \Coff\OandaWrapper\Endpoint\AccountEndpoint();
 
 try {
 
-    /** @var \Coff\OandaWrapper\Response\ResponseInterface $response */
+    /** @var \Coff\OandaWrapper\EndpointResponse\EndpointResponseInterface $response */
     $response = $caller
         ->call($endpoint)
         ->getResponse();

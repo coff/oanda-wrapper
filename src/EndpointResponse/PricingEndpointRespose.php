@@ -1,14 +1,14 @@
 <?php
 
 
-namespace Coff\OandaWrapper\Response;
+namespace Coff\OandaWrapper\EndpointResponse;
 
 
 use Coff\OandaWrapper\Entity\EntityInterface;
 use Coff\OandaWrapper\Entity\Price\Price;
 use Psr\Http\Message\ResponseInterface as HttpResponseInterface;
 
-class PricingRespose extends Response
+class PricingEndpointRespose extends EndpointResponse
 {
     protected static $entityClass = Price::class;
 

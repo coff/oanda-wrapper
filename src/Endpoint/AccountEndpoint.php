@@ -2,16 +2,14 @@
 
 namespace Coff\OandaWrapper\Endpoint;
 
-use Coff\OandaWrapper\Entity\Account\Account;
-use Coff\OandaWrapper\Response\AccountResponse;
-use Psr\Http\Message\ResponseInterface;
+use Coff\OandaWrapper\EndpointResponse\AccountEndpointResponse;
 
 class AccountEndpoint extends AccountsEndpoint
 {
     /** @var string */
     protected $accountId;
 
-    protected $responseClass = AccountResponse::class;
+    protected $responseClass = AccountEndpointResponse::class;
 
     public function getHeaders()
     {

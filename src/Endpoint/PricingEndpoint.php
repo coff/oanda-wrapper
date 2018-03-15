@@ -4,7 +4,7 @@
 namespace Coff\OandaWrapper\Endpoint;
 
 use Coff\OandaWrapper\Entity\InstrumentName;
-use Coff\OandaWrapper\Response\PricingRespose;
+use Coff\OandaWrapper\EndpointResponse\PricingEndpointRespose;
 
 /**
  * Get pricing information for a specified list of Instruments within an Account.
@@ -14,7 +14,7 @@ use Coff\OandaWrapper\Response\PricingRespose;
  */
 class PricingEndpoint extends AccountEndpoint
 {
-    protected $responseClass = PricingRespose::class;
+    protected $responseClass = PricingEndpointRespose::class;
 
     protected $path = '/pricing';
 

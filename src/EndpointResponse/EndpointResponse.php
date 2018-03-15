@@ -1,12 +1,12 @@
 <?php
 
 
-namespace Coff\OandaWrapper\Response;
+namespace Coff\OandaWrapper\EndpointResponse;
 
 use Psr\Http\Message\ResponseInterface as HttpResponseInterface;
 
 
-abstract class Response implements ResponseInterface
+abstract class EndpointResponse implements EndpointResponseInterface
 {
     public function __construct(HttpResponseInterface $response)
     {
@@ -59,7 +59,7 @@ abstract class Response implements ResponseInterface
         return $this->entities[$index];
     }
 
-    public static function createFromHttpResponse(HttpResponseInterface $response): ResponseInterface
+    public static function createFromHttpResponse(HttpResponseInterface $response): EndpointResponseInterface
     {
         return new static($response);
     }

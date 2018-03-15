@@ -4,11 +4,12 @@
 namespace Coff\OandaWrapper\Endpoint;
 
 
+use Coff\OandaWrapper\EndpointResponse\PricingEndpointRespose;
 use Coff\OandaWrapper\Entity\OrderRequest\OrderRequest;
 
 class OrderEndpoint extends AccountEndpoint
 {
-    protected $responseClass = PricingRespose::class;
+    protected $responseClass = PricingEndpointRespose::class;
 
     protected $path = '/orders';
 

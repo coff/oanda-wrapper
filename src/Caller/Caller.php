@@ -5,7 +5,7 @@ namespace Coff\OandaWrapper\Caller;
 
 
 use Coff\OandaWrapper\OandaApiClient;
-use Coff\OandaWrapper\Response\ResponseInterface;
+use Coff\OandaWrapper\EndpointResponse\EndpointResponseInterface;
 
 abstract class Caller implements CallerInterface
 {
@@ -16,7 +16,7 @@ abstract class Caller implements CallerInterface
     protected $httpRequestClass;
 
     /**
-     * @var ResponseInterface
+     * @var EndpointResponseInterface
      */
     protected $response;
 
@@ -50,7 +50,7 @@ abstract class Caller implements CallerInterface
         return $this;
     }
 
-    public function getResponse(): ResponseInterface
+    public function getResponse(): EndpointResponseInterface
     {
         return $this->response;
     }

@@ -1,14 +1,14 @@
 <?php
 
 
-namespace Coff\OandaWrapper\Response;
+namespace Coff\OandaWrapper\EndpointResponse;
 
 
 use Coff\OandaWrapper\Entity\Account\Account;
 use Coff\OandaWrapper\Entity\EntityInterface;
 use Psr\Http\Message\ResponseInterface as HttpResponseInterface;
 
-class AccountResponse extends Response
+class AccountEndpointResponse extends EndpointResponse
 {
     protected static $entityClass = Account::class;
 

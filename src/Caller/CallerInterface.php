@@ -6,7 +6,7 @@ namespace Coff\OandaWrapper\Caller;
 
 use Coff\OandaWrapper\Endpoint\Endpoint;
 use Coff\OandaWrapper\OandaApiClient;
-use Coff\OandaWrapper\Response\ResponseInterface;
+use Coff\OandaWrapper\EndpointResponse\EndpointResponseInterface;
 
 interface CallerInterface
 {
@@ -20,7 +20,7 @@ interface CallerInterface
     public function call(Endpoint $endpoint): CallerInterface;
 
     /**
-     * @return ResponseInterface|null
+     * @return EndpointResponseInterface|null
      */
-    public function getResponse(): ?ResponseInterface;
+    public function getResponse(): ?EndpointResponseInterface;
 }

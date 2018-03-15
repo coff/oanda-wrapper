@@ -4,7 +4,7 @@
 namespace Coff\OandaWrapper\Endpoint;
 
 use Coff\OandaWrapper\Exception\OandaException;
-use Coff\OandaWrapper\Response\ResponseInterface;
+use Coff\OandaWrapper\EndpointResponse\EndpointResponseInterface;
 
 abstract class Endpoint implements EndpointInterface
 {
@@ -40,7 +40,7 @@ abstract class Endpoint implements EndpointInterface
      */
     public function setResponseClass(string $class): EndpointInterface
     {
-        if (false === $class instanceof ResponseInterface) {
+        if (false === $class instanceof EndpointResponseInterface) {
             throw new OandaException('Invalid response class!');
         }
 
