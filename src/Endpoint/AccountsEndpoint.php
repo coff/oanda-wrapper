@@ -4,8 +4,6 @@
 namespace Coff\OandaWrapper\Endpoint;
 
 
-use Psr\Http\Message\ResponseInterface;
-
 class AccountsEndpoint extends Endpoint
 {
     private $path = '/accounts';
@@ -19,12 +17,4 @@ class AccountsEndpoint extends Endpoint
     {
         return self::METHOD_GET;
     }
-
-    public function parseResponse(ResponseInterface $response)
-    {
-        $stream = $response->getBody();
-
-        $this->result = json_decode($stream->getContents());
-    }
-
 }

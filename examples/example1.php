@@ -3,6 +3,8 @@
 
 namespace Coff\OandaWrapper\Examples;
 
+use Coff\OandaWrapper\Endpoint\AccountEndpoint;
+
 include(__DIR__ . '/../vendor/autoload.php');
 
 include(__DIR__ . '/bootstrap.php');
@@ -16,7 +18,7 @@ include(__DIR__ . '/bootstrap.php');
  * -------------------------------------------------------------------------
  */
 
-$endpoint = new \Coff\OandaWrapper\Endpoint\AccountEndpoint();
+$endpoint = new AccountEndpoint();
 /*$endpoint
     ->setResponseClass(...)*/
 

@@ -33,6 +33,11 @@ class InstrumentName extends Entity
     }
 
 
+    /**
+     * @param \stdClass $json
+     * @return Entity
+     * @throws OandaException
+     */
     public static function createFromJson(\stdClass $json) :Entity
     {
         throw new OandaException('Not implemented!');

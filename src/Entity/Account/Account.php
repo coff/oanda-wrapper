@@ -207,6 +207,7 @@ class Account extends Entity
     /**
      * @param \stdClass $json
      * @return Account
+     * @throws \Coff\OandaWrapper\Exception\OandaException
      */
     public static function createFromJson(\stdClass $json): self
     {

@@ -12,6 +12,7 @@ interface EndpointResponseInterface
 
     /**
      * @param \Psr\Http\Message\ResponseInterface $response
+     * @return EndpointResponseInterface
      */
     public static function createFromHttpResponse(HttpResponseInterface $httpResponse): EndpointResponseInterface;
 
@@ -23,6 +24,7 @@ interface EndpointResponseInterface
 
     /**
      * Returns one or the only response entity
+     * @param int $index
      * @return mixed
      */
     public function getEntity($index = 0);

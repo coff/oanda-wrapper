@@ -25,7 +25,7 @@ abstract class Caller implements CallerInterface
      */
     public function getRequestClass(): string
     {
-        return $this->requestClass;
+        return $this->httpRequestClass;
     }
 
     /**

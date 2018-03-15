@@ -26,7 +26,6 @@ class GuzzleHttpCaller extends Caller
     /**
      * @param Endpoint $endpoint
      * @return CallerInterface
-     * @throws OandaException
      * @throws GuzzleException
      */
     public function call(Endpoint $endpoint): CallerInterface

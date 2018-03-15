@@ -52,6 +52,7 @@ abstract class EndpointResponse implements EndpointResponseInterface
     }
 
     /**
+     * @param int $index
      * @return mixed
      */
     public function getEntity($index = 0)

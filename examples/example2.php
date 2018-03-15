@@ -3,6 +3,8 @@
 
 namespace Coff\OandaWrapper\Examples;
 
+use Coff\OandaWrapper\Endpoint\PricingEndpoint;
+use Coff\OandaWrapper\Entity\InstrumentName;
 use Coff\OandaWrapper\Enum\Currency;
 
 include(__DIR__ . '/../vendor/autoload.php');
@@ -18,9 +20,9 @@ include(__DIR__ . '/bootstrap.php');
  * -------------------------------------------------------------------------
  */
 
-$instrumentName = new \Coff\OandaWrapper\Entity\InstrumentName(Currency::EUR(), Currency::USD());
+$instrumentName = new InstrumentName(Currency::EUR(), Currency::USD());
 
-$endpoint = new \Coff\OandaWrapper\Endpoint\PricingEndpoint();
+$endpoint = new PricingEndpoint();
 $endpoint->addInstrument($instrumentName);
 
 try {

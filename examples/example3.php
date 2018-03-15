@@ -3,6 +3,7 @@
 
 namespace Coff\OandaWrapper\Examples;
 
+use Coff\OandaWrapper\Endpoint\OrderEndpoint;
 use Coff\OandaWrapper\Entity\ClientExtensions;
 use Coff\OandaWrapper\Entity\Details\StopLossDetails;
 use Coff\OandaWrapper\Entity\InstrumentName;
@@ -21,7 +22,7 @@ include(__DIR__ . '/bootstrap.php');
  * -------------------------------------------------------------------------
  */
 
-$endpoint = new \Coff\OandaWrapper\Endpoint\OrderEndpoint();
+$endpoint = new OrderEndpoint();
 $endpoint->setOrderRequest($marketOrder = new MarketOrderRequest());
 
 $marketOrder

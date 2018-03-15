@@ -4,7 +4,9 @@
 namespace Coff\OandaWrapper\EndpointResponse;
 
 
-class OrderEndpointResponse extends Response
+use Coff\OandaWrapper\Endpoint\Endpoint;
+
+class OrderEndpointResponse extends EndpointResponse
 {
 
 }

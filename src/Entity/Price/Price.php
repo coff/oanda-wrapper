@@ -6,7 +6,6 @@ namespace Coff\OandaWrapper\Entity\Price;
 
 use Coff\OandaWrapper\Entity\Entity;
 use Coff\OandaWrapper\Entity\InstrumentName;
-use Coff\OandaWrapper\Entity\Order\UnitsAvailable;
 
 class Price extends Entity
 {
@@ -26,7 +25,7 @@ class Price extends Entity
     protected $time;
 
     /**
-     * @var boolean $tradeable Flag indicating if the Price is tradable or not.
+     * @var boolean $tradeable Flag indicating if the Price is tradeable or not.
      */
     protected $tradeable;
 
@@ -71,9 +70,12 @@ class Price extends Entity
     /**
      * Price constructor.
      * @param InstrumentName $instrument
+     * @param \DateTime $time
      * @param PriceBucket[] $bids
      * @param PriceBucket[] $asks
-     * @param bool $tradable
+     * @param bool $tradeable
+     * @param null $closeoutBid
+     * @param null $closeoutAsk
      */
     public function __construct(InstrumentName $instrument, \DateTime $time, array $bids, array $asks, bool $tradeable = true, $closeoutBid = null, $closeoutAsk = null)
     {
@@ -99,10 +101,12 @@ class Price extends Entity
 
         $instrument = InstrumentName::createFromString($json->instrument);
 
+        $asks = [];
         foreach ($json->asks as $ask) {
             $asks[] = PriceBucket::createFromJson($ask);
         }
 
+        $bids = [];
         foreach ($json->bids as $ask) {
             $bids[] = PriceBucket::createFromJson($ask);
         }

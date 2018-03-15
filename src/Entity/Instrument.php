@@ -47,8 +47,4 @@ class Instrument extends Entity
     /** @var InstrumentCommission */
     protected $commission;
 
-    public function toJson(): string
-    {
-
-    }
 }

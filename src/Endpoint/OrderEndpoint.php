@@ -39,6 +39,10 @@ class OrderEndpoint extends AccountEndpoint
         return $this;
     }
 
+    /**
+     * @return null|string
+     * @throws \Coff\OandaWrapper\Exception\OandaException
+     */
     public function getBody()
     {
         $obj = new \stdClass();
