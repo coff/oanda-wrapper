@@ -9,8 +9,4 @@ namespace Coff\OandaWrapper\Entity;
  */
 class DynamicOrderState extends Entity
 {
-    public function toJson(): string
-    {
-        // TODO: Implement toJson() method.
-    }
 }

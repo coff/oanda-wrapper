@@ -12,13 +12,4 @@ class OrderIdentifier extends Entity
 
     protected $clientOrderId;
 
-    /**
-     * @return string
-     */
-    public function toJson(): string
-    {
-        return <<<JSON
-{ orderID: $this->orderId, clientOrderID: $this->clientOrderId
-JSON;
-    }
 }

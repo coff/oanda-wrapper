@@ -27,4 +27,11 @@ class TakeProfitDetails extends Details
         $this->price = $price;
     }
 
-}
+    public function toJson(): \stdClass
+    {
+        $obj = parent::toJson();
+
+        $obj->price = $this->price;
+
+        return $obj;
+    }}

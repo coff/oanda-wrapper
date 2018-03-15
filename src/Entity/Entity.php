@@ -16,10 +16,10 @@ abstract class Entity implements EntityInterface
     }
 
     /**
-     * @return string
+     * @return \stdClass
      * @throws OandaException
      */
-    public function toJson(): string
+    public function toJson(): \stdClass
     {
         throw new OandaException('Method ' . __METHOD__ . ' not implemented for class ' . get_called_class());
     }

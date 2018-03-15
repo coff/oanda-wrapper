@@ -12,5 +12,8 @@ interface EntityInterface
      */
     public static function createFromJson(\stdClass $json);
 
-    public function toJson(): string;
+    /**
+     * @return \stdClass
+     */
+    public function toJson(): \stdClass;
 }

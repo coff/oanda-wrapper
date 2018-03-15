@@ -22,16 +22,6 @@ class Order extends Entity
     /** @var OrderType */
     protected $type;
 
-    public function toJson(): string
-    {
-
-
-        return <<<JSON
-{ id: $this->id, createTime: "{$this->createTime->format('U.u')}"
-JSON;
-    }
-
-
     /**
      * @return mixed
      */

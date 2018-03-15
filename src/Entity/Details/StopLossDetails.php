@@ -30,5 +30,12 @@ class StopLossDetails extends Details
         return $this;
     }
 
+    public function toJson(): \stdClass
+    {
+        $obj = parent::toJson();
 
+        $obj->price = $this->price;
+
+        return $obj;
+    }
 }

@@ -28,5 +28,12 @@ class TrailingStopLossDetails extends Details
         $this->distance = $distance;
     }
 
+    public function toJson(): \stdClass
+    {
+        $obj = parent::toJson();
 
+        $obj->distance = $this->distance;
+
+        return $obj;
+    }
 }
