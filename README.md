@@ -7,3 +7,33 @@ I take absolutely no responsibility for consequences of using this
 software. Some example scripts and tests may open trade positions
 on your account causing real financial losses! Run test scripts with 
 your DEMO ACCOUNT ONLY! You're using this software on your own risk!
+
+
+Usage example:
+
+```php
+/* bootstrapping */
+$oanda = new \Coff\OandaWrapper\OandaApiClient();
+$oanda
+    ->setStage(\Coff\OandaWrapper\OandaApiClient::STAGE_DEV)
+    ->setAuthToken($config['token'])
+    ->setAccount($config['account']);
+
+$caller = new \Coff\OandaWrapper\Caller\GuzzleHttpCaller();
+
+$caller
+    ->setHttpRequestClass(\GuzzleHttp\Psr7\Request::class)
+    ->setHttpClient(new \GuzzleHttp\Client())
+    ->setClient($oanda);
+
+/* usage */
+$instrumentName = new InstrumentName(Currency::EUR(), Currency::USD());
+
+$endpoint = new PricingEndpoint();
+$endpoint->addInstrument($instrumentName);
+
+$response = $caller
+    ->call($endpoint)
+    ->getResponse();
+
+```
