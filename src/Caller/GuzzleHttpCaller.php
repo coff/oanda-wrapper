@@ -4,10 +4,10 @@ namespace Coff\OandaWrapper\Caller;
 
 use Coff\OandaWrapper\Endpoint\AccountEndpoint;
 use Coff\OandaWrapper\Endpoint\Endpoint;
-use Coff\OandaWrapper\Exception\OandaException;
 use Coff\OandaWrapper\EndpointResponse\EndpointResponseInterface;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Exception\RequestException;
 use Psr\Http\Message\RequestInterface as HttpRequest;
 use Psr\Http\Message\ResponseInterface as HttpResponse;
 
@@ -43,7 +43,11 @@ class GuzzleHttpCaller extends Caller
         $request = new $this->httpRequestClass($endpoint->getMethod(), $url, $headers, $endpoint->getBody());
 
         /** @var HttpResponse $response */
-        $httpResponse = $this->httpClient->send($request);
+        try {
+            $httpResponse = $this->httpClient->send($request);
+        } catch (RequestException $e) {
+            $httpResponse = $e->getResponse();
+        }
 
         /** @var EndpointResponseInterface $responseClass */
         $responseClass = $endpoint->getResponseClass();

@@ -8,14 +8,16 @@ use Psr\Http\Message\ResponseInterface as HttpResponseInterface;
 
 abstract class EndpointResponse implements EndpointResponseInterface
 {
-    public function __construct(HttpResponseInterface $response)
-    {
-    }
 
     /**
      * @var string $entityClass Class for objects when factorizing with Entity::createFromJson();
      */
     protected static $entityClass;
+
+    /**
+     * @var int $returnCode code returned by endpoint
+     */
+    protected $returnCode;
 
     /**
      * @var \DateTime
@@ -26,6 +28,15 @@ abstract class EndpointResponse implements EndpointResponseInterface
      * @var array
      */
     protected $entities = [];
+
+    /**
+     * EndpointResponse constructor.
+     * @param HttpResponseInterface $response
+     */
+    public function __construct(HttpResponseInterface $response)
+    {
+        $this->returnCode = $response->getStatusCode();
+    }
 
     /**
      * @return string
@@ -60,8 +71,24 @@ abstract class EndpointResponse implements EndpointResponseInterface
         return $this->entities[$index];
     }
 
+    /**
+     * @param HttpResponseInterface $response
+     * @return EndpointResponseInterface
+     */
     public static function createFromHttpResponse(HttpResponseInterface $response): EndpointResponseInterface
     {
-        return new static($response);
+        if ($response->getStatusCode() >= 400) {
+            return new ErrorEndpointResponse($response);
+        } else {
+            return new static($response);
+        }
+    }
+
+    /**
+     * @return int
+     */
+    public function getReturnCode()
+    {
+        return $this->returnCode;
     }
 }

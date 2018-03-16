@@ -52,6 +52,7 @@ class MarketOrderRequest extends OrderRequest
     public function __construct()
     {
         $this->timeInForce = TimeInForce::FOK();
+        $this->positionFill = OrderPositionFill::DEFAULT();
     }
 
     public function toJson(): \stdClass

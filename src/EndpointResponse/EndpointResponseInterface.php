@@ -28,4 +28,10 @@ interface EndpointResponseInterface
      * @return mixed
      */
     public function getEntity($index = 0);
+
+    /**
+     * @return int
+     */
+    public function getReturnCode();
+
 }
