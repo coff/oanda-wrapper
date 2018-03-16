@@ -26,7 +26,7 @@ $endpoint = new OrderEndpoint();
 $endpoint->setOrderRequest($marketOrder = new MarketOrderRequest());
 
 $marketOrder
-    ->setInstrument(InstrumentName::createFromString("PLN_EUR"))
+    ->setInstrument(InstrumentName::createFromString("EUR_PLN"))
     ->setUnits(1)
     ->setPriceBound(10)
     ->setStopLossOnFill($stopLossDet = new StopLossDetails())

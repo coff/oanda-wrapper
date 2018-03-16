@@ -16,6 +16,13 @@ class OrderEndpoint extends AccountEndpoint
     /** @var OrderRequest */
     protected $orderRequest;
 
+    public function getHeaders()
+    {
+        $headers = parent::getHeaders();
+        $headers['Content-Type'] = 'application/json';
+        return $headers;
+    }
+
     /**
      * @return OrderRequest
      */
@@ -50,5 +57,10 @@ class OrderEndpoint extends AccountEndpoint
         $obj->order = $this->orderRequest->toJson();
 
         return json_encode($obj);
+    }
+
+    public function getPath()
+    {
+        return parent::getPath() . $this->path;
     }
 }
