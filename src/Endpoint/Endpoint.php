@@ -59,7 +59,9 @@ abstract class Endpoint implements EndpointInterface
 
     public function getHeaders()
     {
-        return $this->headers;
+        $headers = [];
+        $headers['Accept-Datetime-Format'] = 'UNIX';
+        return $headers;
     }
 
     public function getBody()
@@ -74,4 +76,8 @@ abstract class Endpoint implements EndpointInterface
         return $this;
     }
 
+    public function getMethod()
+    {
+        return self::METHOD_GET;
+    }
 }

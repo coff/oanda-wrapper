@@ -46,4 +46,8 @@ class PriceBucket extends Entity
         return $this->liquidity;
     }
 
+    public function __toString()
+    {
+        return $this->price;
+    }
 }

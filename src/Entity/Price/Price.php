@@ -4,6 +4,7 @@
 namespace Coff\OandaWrapper\Entity\Price;
 
 
+use Coff\OandaWrapper\DateTime\DateTime;
 use Coff\OandaWrapper\Entity\Entity;
 use Coff\OandaWrapper\Entity\InstrumentName;
 
@@ -113,7 +114,7 @@ class Price extends Entity
 
         $entity = new static(
             $instrument,
-            \DateTime::createFromFormat('U.u', substr($json->time, 0, 17)),
+            DateTime::createFromFormat('U.u', $json->time),
             $bids,
             $asks,
             $json->tradeable,
@@ -187,5 +188,8 @@ class Price extends Entity
         return $this->closeoutAsk;
     }
 
-
+    public function __toString()
+    {
+        return $this->instrument . ' at ' . $this->time->format('Y-m-d H:i:s.u') . ' BIDS:' . implode(",", $this->bids) . ' ASKS:' . implode( ",", $this->asks) . 'tradeable:' . $this->tradeable;
+    }
 }

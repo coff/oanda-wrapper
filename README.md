@@ -55,7 +55,7 @@ $response = $caller
 ## Endpoints
 
 - [x] account endpoint (partially)
-- [ ] instrument endpoint
+- [x] instrument endpoint (partially)
 - [x] order endpoint (partially)
 - [ ] trade endpoint
 - [ ] position endpoint
